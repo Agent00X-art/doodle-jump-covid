@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width,user-scalable=no"/>
+	<title>COVID19</title>
+</head>
+<body>
+<script type="text/javascript" src="point.js"></script>
+<script type="text/javascript" src="init.js"></script>
+<script type="text/javascript" src="grid.js"></script>
+<script type="text/javascript" src="blocks.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript" src="pl.js"></script>
+<script type="text/javascript" src="heroes.js"></script>
+<script type="text/javascript" src="settings.js"></script>
+<script type="text/javascript" src="countries.js"></script>
+<script type="text/javascript" src="coins.js"></script>
+<script type="text/javascript" src="sound.js"></script>
+<script type="text/javascript" src="russia.js"></script>
+<script type="text/javascript" src="china.js"></script>
+
+<script type="text/javascript">
+    
+game.newLoop('menu', function () {
+    music(volBack);
+	game.fill('#D9D9D9');
+	MainBackground(1); // вот наша сетка
+	drawMenu(); // а вот и меню с обработчиком
+});
+
+game.startLoop('menu'); 
+    
+// стартуем игровой цикл menu
+    
+game.newLoop('Heroes', function () {
+    music(volBack);
+    game.fill('#D9D9D9');     
+    HeroBackground(1);
+    ChooseHero();
+});
+    
+game.newLoop('Settings', function () {
+    music(volBack);
+    game.fill('#D9D9D9');     
+    MainBackground(1);
+    Settings();
+});
+    
+game.newLoop('Countries', function () {
+    music(volBack);
+    game.fill('#D9D9D9');     
+    MainBackground(1);
+    Countries();
+});   
+	
+game.newLoop('KalChina', function () {
+    music(volBack);
+    ChinaBackground(1);
+	KalendarBackground(1);
+    ChinaLevels();
+});    
+	
+game.newLoop('KalRussia', function () {
+  	music(volBack);
+    RussiaBackground(1);
+	KalendarBackground(1);
+    RussiaLevels();
+});
+	
+game.newLoop('RussiaRes', function () {
+  	music(volBack);
+    RussiaBackground(1);
+	KalendarBackground(1);
+    RussianDied();
+});
+	
+game.newLoop('ChinaRes', function () {
+  	music(volBack);
+    ChinaBackground(1);
+	KalendarBackground(1);
+    ChinaDied();
+});
+
+game.newLoop('CongRussia3', function () {
+  	music(volBack);
+    RussiaBackground3(1);
+    RussiaWin();
+});
+    
+game.newLoop('CongRussia2', function () {
+  	music(volBack);
+    RussiaBackground2(1);
+    RussiaWin();
+});
+    
+game.newLoop('CongRussia1', function () {
+  	music(volBack);
+    RussiaBackground1(1);
+    RussiaWin();
+});
+	
+game.newLoop('CongChina3', function () {
+  	music(volBack);
+    ChinaBackground3(1);
+    ChinaWin();
+});
+
+game.newLoop('CongChina2', function () {
+  	music(volBack);
+    ChinaBackground2(1);
+    ChinaWin();
+});
+    
+game.newLoop('CongChina1', function () {
+  	music(volBack);
+    ChinaBackground1(1);
+    ChinaWin();
+});
+
+game.newLoop('China', function () {
+    
+	music(volBack);
+    dt = game.getDT(Speed);
+    ChinaBackground(1);
+    drawLevel();
+	drawPlayer(); 
+brush.drawTextS({
+		x : 10, y : height/10, // позиция (будет в самом верху экрана)
+		text : (Math.abs(score)-91), // текст
+		size : 300*del, // размер
+		color : '#ffffff',
+		font : 'monospace',
+		fontweight: 'bold'
+	});
+coin.draw();
+	
+    coin.setPositionCS(point(width/15, height/20));
+    brush.drawTextS({
+		x : width/7, y : height/40, // позиция (будет в самом верху экрана)
+		text : Math.abs(coins), // текст
+		size : 300*del, // размер
+		color : '#ffffff',// цвет
+		font : 'monospace',
+		fontweight: 'bold'// шрифт
+	});
+}); 
+	
+game.newLoop('Russia', function () {
+    
+    music(volBack);
+	dt = game.getDT(Speed);
+	RussiaBackground(1);
+    drawLevel();
+	drawPlayer(); 
+		
+	brush.drawTextS({
+		x : 10, y : height/10, // позиция (будет в самом верху экрана)
+		text : (Math.abs(score)-91), // текст
+		size : 300*del, // размер
+		color : '#ffffff',
+		font : 'monospace',
+		fontweight: 'bold'
+	});
+coin.draw();
+	
+    coin.setPositionCS(point(width/15, height/20));
+    brush.drawTextS({
+		x : width/7, y : height/40, // позиция (будет в самом верху экрана)
+		text : Math.abs(coins), // текст
+		size : 300*del, // размер
+		color : '#ffffff',// цвет
+		font : 'monospace',
+		fontweight: 'bold'// шрифт
+	});
+}); 
+</script>
+
+</body>
+</html>
